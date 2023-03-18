@@ -1,5 +1,8 @@
 export const colors = {
-    "purple": "#7C3AED",
+    "purple": {
+        "dark": "#7C3AED",
+        "hover":"#9F67FF"
+    },
     "gray": {
         50:"#F8FAFC",
         100:"#F1F5F9",
@@ -11,5 +14,6 @@ export const colors = {
         700: "#334155",
         800:"#1E293B",
         900:"#0F172A",
-    }
+    },
+    "white": "#fff"
 }
