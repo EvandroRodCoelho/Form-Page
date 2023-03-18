@@ -1,0 +1,16 @@
+Progress: resolved 0, reused 1, downloaded 0, added 0
+Progress: resolved 6, reused 6, downloaded 0, added 0
+Progress: resolved 7, reused 6, downloaded 0, added 0
+Progress: resolved 11, reused 7, downloaded 1, added 0
+Progress: resolved 64, reused 62, downloaded 1, added 0
+Packages: +8 -3
+++++++++---
+Progress: resolved 116, reused 115, downloaded 1, added 5
+
+devDependencies:
++ react 18.2.0
++ react-dom 18.2.0
++ react-is 18.2.0
+
+Progress: resolved 116, reused 115, downloaded 1, added 8, done
+Done in 8.6s
