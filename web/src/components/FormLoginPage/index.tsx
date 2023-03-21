@@ -3,27 +3,48 @@ import { Button } from "../Button";
 import { Label } from "../Label";
 import { Paragraph } from "../Paragraph";
 import * as C from "./styles";
-import { useForm } from "react-hook-form";
-
+import { SubmitHandler,useForm } from "react-hook-form";
+import { z } from "zod";
+import {zodResolver } from "@hookform/resolvers/zod"
 
 export interface FormData {
     email: string;
     password: string;
 }
 export function FormLoginPage() {
-    const {register, handleSubmit } = useForm<FormData>();
-    const onSubmit = handleSubmit((data) => console.log(data));
+
+    const schema = z.object({
+        email: z.string().email("Digite um email valido"),
+        password: z.string().min(8, "Senha incoreta")
+    })
+
+    const { register, handleSubmit,
+        formState: { errors, isSubmitting } } = useForm<FormData>({
+            resolver: zodResolver(schema),
+        });
+    const onSubmit: SubmitHandler<FormData> = async (data) => {
+        await new Promise(async (resolve) => {
+          await setTimeout(() => {
+            console.log(data);
+            resolve(undefined);
+          }, 3000);
+        });
+      };
+
+
     return (
 
-        <C.Container onSubmit={onSubmit}>
+        <C.Container onSubmit={handleSubmit(onSubmit)}>
             <div>
                 <div>
                     <Label htmlFor='email'>
                         Email
                     </Label>
                     <C.Input type="email" placeholder="Digite seu e-mail"
+                        disabled={isSubmitting}
                         {...register('email')}
                     />
+                    <span>{errors.email && (errors.email?.message)}</span>
                 </div>
                     <div>
                         <C.ContainerPasswordInformation>
@@ -34,11 +55,11 @@ export function FormLoginPage() {
                         </C.ContainerPasswordInformation>
 
                     <C.ContainerPasswordInput>
-                       <C.Input type="password" placeholder="Digite sua senha" {...register('password')} />
-
-
+                       <C.Input type="password" disabled={isSubmitting} placeholder="Digite sua senha" {...register('password')} />
                     </C.ContainerPasswordInput>
-
+                    {errors.password && (
+                            <span>{errors.password.message }</span>
+                        )}
                     </div>
             </div>
             <div>
