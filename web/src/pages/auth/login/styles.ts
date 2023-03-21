@@ -26,8 +26,8 @@ export const ContainerImage = styled.div`
 
     width: 100%;
     height: 100vh;
-    @media (max-width:700px) {
-
+    @media (max-width:900px) {
+        display: none;
     }
 `;
 export const ContainerForm = styled.div`
@@ -55,6 +55,16 @@ export const ContainerForm = styled.div`
         & > header {
             flex: 0.3;
         }
+    }
+    @media (max-width: 700px) {
+        margin-left: 30px;
+        & > header {
+           height: 100vh;
+           margin-bottom: 10px;
+        }
+        & > div,& > header {
+        margin-left: 0;
+    }
     }
 `;
 export const HeaderForm = styled.header`
