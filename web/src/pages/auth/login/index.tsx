@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import logo from '../../../assets/img/logo.svg';
 import { Title } from '../../../components/Title';
 import { Paragraph } from '../../../components/Paragraph';
-import { Label } from '../../../components/Label';
-import { Input } from '../../../components/Input';
 import { FormLoginPage } from '../../../components/FormLoginPage';
 export function Login() {
     return (
